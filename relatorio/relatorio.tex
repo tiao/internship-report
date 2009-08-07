@@ -1,0 +1,65 @@
+% Filipe Medeiros de Almeida -- f.almeida87l@gmail.com
+% 2009-08
+% ----------------------------------------------------------------------- %
+% Relatorio de Estágio Profissional
+% Arquivo: relatorio.tex (principal)
+% ----------------------------------------------------------------------- %
+
+\documentclass[ruledheader]{abnt}
+
+\usepackage{estilo-monografia}
+
+\usepackage{url,subfigure,graphicx}
+\usepackage{listings,color}
+\usepackage{multirow}
+
+\newcommand{\eng}[1]{\foreignlanguage{english}{\textit{#1}}}
+
+\definecolor{colBack}{rgb}{1,1,.98}
+\definecolor{colKeys}{rgb}{0,0,0}
+\definecolor{colIdentifier}{rgb}{0,0,0.9}
+\definecolor{colComments}{rgb}{.4,.4,.4}
+\definecolor{colString}{rgb}{0,0,0.6}
+
+\lstset{language=C,basicstyle=\ttfamily\footnotesize,tabsize=3,frame=single,showtabs=false,showspaces=false,numbers=left,numberstyle=\tiny,linewidth=0.98\linewidth,xleftmargin=21pt,tab=$\to$,float=tbph,extendedchars,breaklines,showstringspaces=false,identifierstyle=\color{colIdentifier},keywordstyle=\color{colKeys},stringstyle=\color{colString},commentstyle=\color{colComments},backgroundcolor=\color{colBack},columns=flexible,captionpos=b,aboveskip=\bigskipamount}
+
+\usepackage[printonlyused]{acronym-emerson}
+
+% \usepackage{makeglo}
+% \makeglossary
+
+\begin{document}
+
+% inclusão das partes iniciais do documento
+\include{capa}
+% \include{folhadeaprovacao}
+% \include{agradecimentos}
+% \include{abstract}
+
+% listas automáticas: sumário, lista de figuras e lista de tabelas
+\tableofcontents
+\listoffigures
+
+% \include{acronimos}
+% \include{glossario}
+
+% inclusão dos capítulos
+\include{dados}
+\include{introducao}
+\include{empresa}
+\include{atividades}
+\include{conclusoes}
+
+% inclusão de apêndices (se houver)
+%\apendice
+%\include{ipv6}
+% \include{sock}
+
+% inclusão de anexos (se houver)
+% \anexo
+% \include{anexo}
+
+% \bibliographystyle{abnt-alf}
+% \bibliography{rfc}
+
+\end{document}
