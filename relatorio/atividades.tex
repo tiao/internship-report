@@ -1,6 +1,205 @@
 % ----------------------------------------------------------------------- %
 % Arquivo: atividades.tex
 % ----------------------------------------------------------------------- %
+%  Neste capitulo, deve ser apresentada uma descrição detalhada dos trabalhos executados.
+%  Deve-se descrever o procedimento ou as diversas etapas de cada trabalho,
+%  citando equipamentos e materiais utilizados, bem como normas, catálogos, etc.
+%
+%  Para cada atividade, deve-se expor claramente seus objetivos, os fundamentos teóricos necessários
+%  a compreensão do que foi feito, os procedimentos (inclusive os cuidados tomados e
+%  os problemas ocorridos) e o resultado final da atividade.
+%
+%  Pode-se incluir tabelas, fotos, diagramas e outros recursos que favoreçam o entendimento do
+%  que está sendo descrito.
+%  Ao se incluir tais itens, devem ser feitas referências a elas no texto. Material mais
+%  volumoso deve ser posto em anexo, no texto, o número do anexo e a página em que se encontra.
 
-\chapter{Projeto}
-\label{c_projeto}
+\chapter{Atividades desenvolvidas}
+
+Durante o periodo que fiz parte da equipe de desenvolvimento da Pulso Brasil Digital, tive
+a oportunidade executar diversas tarefas como: gerencia de redes, programacao de Web Site
+e Intranet da empresa, desenvolvimento de scripts para automacao de processos da rede,
+manutencao de equipamentos. Porem, neste documento vou descrever uma das principais tarefas
+desenvolvidas e que consumiu a maior parte do tempo.
+
+A Empresa começou a receber uma quantidade muito grande de gabinetes padrão Telebrás para
+dar manutenção. Foi proposto ao setor de desenvolvimento a criação de um equipamento
+que substituise a jiga de teste dos gabinetes.
+
+\section{Projeto e Desenvolvimento}
+
+\subsection{Descrição Geral}
+
+   Projetar e desenvolver uma equipamento de baixo custo para ser utilizado como jiga de teste
+para gabinetes padrão. O principal objetivo da equipamento é diminuir o tempo e padronizar os
+testes dos gabinetes.
+   Os teste necessários para o gabinete são a continuidade e o isolamento das conexões das interfaces
+analógica, interface digital com o conector EDGE, onde o modem é conectado. Em alguns modelos temos
+a interface para gerência. E o teste dos niveis de tensão da fonte do gabinete.
+   O equipamento foi batizado de Jigab, a combinação das palavras jiga e gabinete.
+
+\subsection{Análise do Projeto}
+
+   Depois de definir a tarefa, foi passado para a etapa de análise do projeto. Nesta fase foram
+definidos os requisitos do sistema, a nível de hardware, software e de usuário. Após definidos
+os requisitos foi realizado o planejamento do desenvolvimento, para delegar as tarefas entre a
+equipe, cronograma financeiro e de atividades.
+
+\subsubsection{Requesitos de Hardware}
+
+    Na fase do projeto de hardware os seguintes componentes foram especificados:
+
+\begin{enumerate}
+\item CPU: AT89S52, foi escolhido por ser de baixo custo, ter um baixo consumo,
+ fácil aquisicao no mercado local e dominio da tecnologia.
+\item Memória: ROM interna(8Kbytes), RAM interna(256 bytes), e EEPROM externa de 4Kbit, 93c66,
+ para salvar as configurações.
+\item Clock: 11.0592 MHz
+\item Interface de E/S: 40 vias de entrada e 40 vias de saida, é feito atravez da multiplexação
+ de 5 latch e 5 tri-state.
+\item Proteção: Circuito adicional de proteção do teste de isolamento.
+\item Alimentação: 5 Volts
+\item Teclado: 3 teclas
+\item Display LCD: 20 colunas e 4 linhas;
+\item UART: RS-232
+\item Conversor A/D: ADC0804, 8 bits.
+\item Fonte 130V DC Para teste de isolação.
+\end{enumerate}
+
+\subsubsection{Requesitos de Software}
+
+   Com base nos requisitos de hardware foram levantados as principais componentes de software:
+\begin{enumerate}
+\item API de criação de menu tipo lista giratória para Display de LCD
+\item Driver Conversor A/D
+\item Driver para leitura/escrita na EEPROM
+\item Driver RS-232
+\item Teste de continuidade da vias de entrada e saida
+\item Teste de isolamento
+\end{enumerate}
+
+\subsubsection{Requesitos de Usuário}
+
+   Observando as necessidades do usuários foram destacadas como principais:
+
+\begin{enumerate}
+ \item Fácil conexão do gabinete com o equipamento;
+ \item Indicação especifica de defitos, ex.: Curto da pino 1 da IA com o TERRA.
+ \item Possibilidade de configuração do modelo do gabinete.
+ \item Possibilidade de testar com gabinete aberto e fechado.
+ \item Relatório do teste.
+ \end{enumerate}
+
+\subsection{Desenvolvimento do Protótipo}
+
+    Após realizar as fases de análise e concepção do projeto foi passado para a fase de
+desenvolvimento. Primeiramente foi montando um ambiente de desenvolvimento para os projetos de
+hardware e de software, baseados em simulação. Numa segunda fase iniciou-se o projeto do hardware
+e paralelamente a finalização do software utilizando o protótipo.
+
+\subsubsection{Ambiente de Desenvolvimento}
+
+   O ambiente de desenvolvimento deste produto deveria prover:
+
+\begin{itemize}
+\item Um programa para simulacao de microcontroladores;
+\item Um editor para códigos C;
+\item Um compilador C para diversos microcontroladores;
+\item Um programa para depuracao dos softwares desenvolvidos;
+\item Um programa para construcao de esquemas elétricos;
+\item Um programa para projeto de layouts de placas de circuito impresso;
+\item Um programa para gravar os programas no microcontrolador.
+\end{itemize}
+
+    Foi decidido optar primeiramente por softwares livres que rodassem em sistemas GNU/Linux,
+para evitar gastos com licenca de software, por desempenho e pela liberdade que encontramos
+nestes ambientes.
+
+\textbf{Proteus} Fornece um ambiente para simulação de diversos microcontroladores,
+construção de esquemas elétricos e placas de circuito impresso. Como ele é compativel
+apenas com sistemas Microsoft Windows, foi utilizado o Wine para rodar ele no Linux.
+
+\textbf{SDCC} Foi escolhido como o compilador para os programas dos projetos. O Small Device C
+Compiler (SDCC) e um software livre, compilador otimizado ANSI-C para microcontroladores de 8 bits.
+
+\textbf{Vim} Foi escolhido o editor para programar. Além de ser um software livre, e altamente costumizável, por plugins
+e scripts, possui um alto desempenho mais leve que outras IDEs disponíveis.
+
+\textbf{isp-at89 e prog89S52} Foram escolhidos como os programadores para os microcontroladores, são programadores para
+a plataforma Linux.
+
+\subsubsection{Consideracoes de Hardware}
+
+     Com base nos requisitos levantados de hardware iniciou-se o protótipo em uma placa padrão de
+circuito impresso. O protótipo foi testado com o software desenvolvido baseado no ambiente simulado.
+
+No diagrama de blocos da figura \ref{fig:diag1} podem ser visualizadas as principais partes do protótipo.
+
+\begin{figure}[htb]
+    \centering  % figura centralizada
+    \includegraphics[scale=0.55]{Diagrama1.png}
+    \caption{\it Diagrama de blocos do Jigab}
+    \label{fig:diag1}
+\end{figure}
+
+
+\begin{center}
+\textbf{Vias de entrada e saida}
+\end{center}
+
+Foi necessário adicioinar
+
+\begin{figure}[htb]
+    \centering  % figura centralizada
+    \includegraphics[scale=0.55]{Diagrama2.png}
+    \caption{\it Esquemas da proteção das vias de entrada e saida}
+    \label{fig:diag1}
+\end{figure}
+
+
+Apesar da complexidade do circuito foi possivel fazer um protótipo funcional do equipamento. O departamento
+técnico utilizou ele por um periodo para fazer uma avalição. Observou-se um ganho na produtividade como
+o esperado, e o protótipo foi aprovado.  Foi util também para resolver alguns problemas
+no projeto de hardware, que não apareceram no simulador, como pôtencia de resistores e resistores de \textit{pull-down}.
+
+
+
+\subsection{Desenvolvimento da Placa de circuito impresso}
+
+Após definir o hardware, teve início a etapa de desenvolvimento da placa de circuito impresso. Como não
+ tinha nenhuma experiencia nesta área, utilizei muito a documentação do própio Proteus.
+
+\subsubsection{Padrões Industriais}
+
+Para fazer uma placa em qualquer industria de PCI(Placa de Circuito Impresso), deve se seguir algumas caracteristicas
+ de fabricação, como o tipo e espessurra da placa, os  diâmetro mínimo dos furos metalizados, o tipo da  máscara de solda,
+ o silkscreen, o espacamento minimo, a largura de trilha mínima, os ângulos de corte da placa e o tamanho máximo.
+
+Essas opções que vão definir o preço por centimetro quadrado. As placas devem ser enviadas no formato Gerber RS274x,
+ que é um padrão na indústria de placas de circuito impresso. Neste arquivos são armazenadas de forma ordenada várias
+ informações sobre a sua placa, como as faces superior e inferior das trilhas, tipos de furos, locais de furação, silkscreen,
+ entre outros.
+
+Após a criação dos arquivos GERBER é fortemente recomendamdo confirar o resultado antes de enviar, usando algum
+ software dedicado a ler este formato, como o View Plot. Nele você poderá abrir os arquivos individualmente, verificando se as
+ camadas de cobre, silkscreen e furos estão corretamente posicionados. A industria não se responsabiliza por eventuais erros
+ decorrentes da omissão desta etapa de verificação.
+
+\subsubsection{Componentes Comerciais e o Proteus}
+
+Um outra etapa foi a definição dos componentes, levando em consideração o encapsulamento, preço e disponibilidade no
+mercado local.
+Alguns componentes utilizado não possuiam o encapsulamento escolhido na biblioteca de componentes do Proteus. Tive que
+aprender a editar a biblioteca do Proteus e criar encapsulamentos.
+
+
+
+
+
+
+
+
+
+
+
+
