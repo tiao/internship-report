@@ -13,30 +13,32 @@
 %  que está sendo descrito.
 %  Ao se incluir tais itens, devem ser feitas referências a elas no texto. Material mais
 %  volumoso deve ser posto em anexo, no texto, o número do anexo e a página em que se encontra.
+%
 
 \chapter{Atividades desenvolvidas}
 
-Durante o periodo que fiz parte da equipe de desenvolvimento da Pulso Brasil Digital, tive
-a oportunidade executar diversas tarefas como: gerencia de redes, programacao de Web Site
-e Intranet da empresa, desenvolvimento de scripts para automacao de processos da rede,
-manutencao de equipamentos. Porem, neste documento vou descrever uma das principais tarefas
+Durante o período que fiz parte da equipe de desenvolvimento da Pulso Brasil Digital, tive
+a oportunidade executar diversas tarefas como: gerencia de redes, programação de Web Site
+e Intranet da empresa, desenvolvimento de scripts para automação de processos da rede,
+manutenção de equipamentos. Porem, neste documento vou descrever uma das principais tarefas
 desenvolvidas e que consumiu a maior parte do tempo.
 
 A Empresa começou a receber uma quantidade muito grande de gabinetes padrão Telebrás para
-dar manutenção. Foi proposto ao setor de desenvolvimento a criação de um equipamento
-que substituise a jiga de teste dos gabinetes.
+dar manutenção. Visando diminuir o tempo dos teste, foi proposto ao setor de desenvolvimento
+a criação de um equipamento que substitui-se a jiga de teste dos gabinetes.
 
 \section{Projeto e Desenvolvimento}
 
 \subsection{Descrição Geral}
 
    Projetar e desenvolver uma equipamento de baixo custo para ser utilizado como jiga de teste
-para gabinetes padrão. O principal objetivo da equipamento é diminuir o tempo e padronizar os
-testes dos gabinetes.
-   Os teste necessários para o gabinete são a continuidade e o isolamento das conexões das interfaces
-analógica, interface digital com o conector EDGE, onde o modem é conectado. Em alguns modelos temos
-a interface para gerência. E o teste dos niveis de tensão da fonte do gabinete.
-   O equipamento foi batizado de Jigab, a combinação das palavras jiga e gabinete.
+para gabinetes padrão. O principal objetivo da equipamento é diminuir o tempo dos testes e
+padronizar os testes nos gabinetes.
+
+    Os teste necessários para o gabinete são de continuidade e de isolamento entre as interfaces
+analógica e digital com o conector EDGE, onde o modem é conectado. E o teste dos níveis de tensão
+da fonte do gabinete.  Em alguns modelos temos a interface para gerência.  O equipamento foi batizado
+de Jigab, a combinação das palavras jiga e gabinete.
 
 \subsection{Análise do Projeto}
 
@@ -51,12 +53,12 @@ equipe, cronograma financeiro e de atividades.
 
 \begin{enumerate}
 \item CPU: AT89S52, foi escolhido por ser de baixo custo, ter um baixo consumo,
- fácil aquisicao no mercado local e dominio da tecnologia.
+ fácil aquisição no mercado local e domínio da tecnologia.
 \item Memória: ROM interna(8Kbytes), RAM interna(256 bytes), e EEPROM externa de 4Kbit, 93c66,
  para salvar as configurações.
 \item Clock: 11.0592 MHz
-\item Interface de E/S: 40 vias de entrada e 40 vias de saida, é feito atravez da multiplexação
- de 5 latch e 5 tri-state.
+\item Interface de E/S: 40 vias de entrada e 40 vias de saída, é feito através da multiplexação
+ de latchs e portas tri-state.
 \item Proteção: Circuito adicional de proteção do teste de isolamento.
 \item Alimentação: 5 Volts
 \item Teclado: 3 teclas
@@ -74,7 +76,7 @@ equipe, cronograma financeiro e de atividades.
 \item Driver Conversor A/D
 \item Driver para leitura/escrita na EEPROM
 \item Driver RS-232
-\item Teste de continuidade da vias de entrada e saida
+\item Teste de continuidade da vias de entrada e saída
 \item Teste de isolamento
 \end{enumerate}
 
@@ -84,122 +86,154 @@ equipe, cronograma financeiro e de atividades.
 
 \begin{enumerate}
  \item Fácil conexão do gabinete com o equipamento;
- \item Indicação especifica de defitos, ex.: Curto da pino 1 da IA com o TERRA.
+ \item Indicação especifica de defeitos, ex.: Curto da pino 1 da IA com o TERRA.
  \item Possibilidade de configuração do modelo do gabinete.
  \item Possibilidade de testar com gabinete aberto e fechado.
  \item Relatório do teste.
  \end{enumerate}
 
-\subsection{Desenvolvimento do Protótipo}
+\section{Desenvolvimento do Protótipo}
 
     Após realizar as fases de análise e concepção do projeto foi passado para a fase de
 desenvolvimento. Primeiramente foi montando um ambiente de desenvolvimento para os projetos de
 hardware e de software, baseados em simulação. Numa segunda fase iniciou-se o projeto do hardware
 e paralelamente a finalização do software utilizando o protótipo.
 
-\subsubsection{Ambiente de Desenvolvimento}
+\subsection{Ambiente de Desenvolvimento}
 
    O ambiente de desenvolvimento deste produto deveria prover:
 
 \begin{itemize}
-\item Um programa para simulacao de microcontroladores;
+\item Um programa para simulação de microcontroladores;
 \item Um editor para códigos C;
 \item Um compilador C para diversos microcontroladores;
-\item Um programa para depuracao dos softwares desenvolvidos;
-\item Um programa para construcao de esquemas elétricos;
-\item Um programa para projeto de layouts de placas de circuito impresso;
+\item Um programa para depuração dos softwares desenvolvidos;
+\item Um programa para construção de esquemas elétricos;
+\item Um programa para projeto de leiautes de placas de circuito impresso;
 \item Um programa para gravar os programas no microcontrolador.
 \end{itemize}
 
     Foi decidido optar primeiramente por softwares livres que rodassem em sistemas GNU/Linux,
-para evitar gastos com licenca de software, por desempenho e pela liberdade que encontramos
+para evitar gastos com licença de software, por desempenho e pela liberdade que encontramos
 nestes ambientes.
 
 \textbf{Proteus} Fornece um ambiente para simulação de diversos microcontroladores,
-construção de esquemas elétricos e placas de circuito impresso. Como ele é compativel
+construção de esquemas elétricos e placas de circuito impresso. Como ele é compatível
 apenas com sistemas Microsoft Windows, foi utilizado o Wine para rodar ele no Linux.
 
 \textbf{SDCC} Foi escolhido como o compilador para os programas dos projetos. O Small Device C
 Compiler (SDCC) e um software livre, compilador otimizado ANSI-C para microcontroladores de 8 bits.
 
-\textbf{Vim} Foi escolhido o editor para programar. Além de ser um software livre, e altamente costumizável, por plugins
+\textbf{Vim} Foi escolhido o editor para programar. Além de ser um software livre, e altamente customizável, por plugins
 e scripts, possui um alto desempenho mais leve que outras IDEs disponíveis.
 
 \textbf{isp-at89 e prog89S52} Foram escolhidos como os programadores para os microcontroladores, são programadores para
 a plataforma Linux.
 
-\subsubsection{Consideracoes de Hardware}
+\subsection{Consideracoes de Hardware}
 
-     Com base nos requisitos levantados de hardware iniciou-se o protótipo em uma placa padrão de
-circuito impresso. O protótipo foi testado com o software desenvolvido baseado no ambiente simulado.
+      Com base nos requisitos levantados de hardware iniciou-se o desenvolvimento de hardware no Proteus,
+onde foi montado o esquema elétrico. Baseado nele, foi dado inicio a programação do software.
+Após isso foi feito um protótipo em uma placa padrão de circuito impresso. O protótipo foi testado com
+o software desenvolvido baseado no ambiente simulado.
 
 No diagrama de blocos da figura \ref{fig:diag1} podem ser visualizadas as principais partes do protótipo.
 
 \begin{figure}[htb]
     \centering  % figura centralizada
-    \includegraphics[scale=0.55]{Diagrama1.png}
+    \includegraphics[scale=0.52]{Diagrama1.png}
     \caption{\it Diagrama de blocos do Jigab}
     \label{fig:diag1}
 \end{figure}
 
-
-\begin{center}
-\textbf{Vias de entrada e saida}
-\end{center}
-
-Foi necessário adicioinar
+Foi necessário adicionar nas vias de saída, um diodo em série, para evitar que o 130V danificasse o circuito
+ caso um varístor da interface analógica estar colocando a linha em curto com o terra. E nas vias de saída um
+ zener e um resistor para terra, em conjunto com um resistor de 1k5 ohms, para limitar a tensão no zener,
+ em serie com a fonte de 130V formam a proteção. A figura \ref{fig:diag2} mostra o esquema de proteção descrita.
 
 \begin{figure}[htb]
     \centering  % figura centralizada
     \includegraphics[scale=0.55]{Diagrama2.png}
-    \caption{\it Esquemas da proteção das vias de entrada e saida}
-    \label{fig:diag1}
+    \caption{\it Esquemas da proteção das vias de entrada e saída}
+    \label{fig:diag2}
 \end{figure}
 
 
-Apesar da complexidade do circuito foi possivel fazer um protótipo funcional do equipamento. O departamento
-técnico utilizou ele por um periodo para fazer uma avalição. Observou-se um ganho na produtividade como
-o esperado, e o protótipo foi aprovado.  Foi util também para resolver alguns problemas
-no projeto de hardware, que não apareceram no simulador, como pôtencia de resistores e resistores de \textit{pull-down}.
+Apesar da complexidade do circuito foi possível concluir o protótipo do equipamento em placa padrão. Tirei algumas
+fotos da placa do protótipo, que estão no anexo A.
+
+O departamento técnico utilizou ele por um período para fazer uma avaliação. Observou-se um ganho na
+produtividade como o esperado, e o protótipo foi aprovado, mas parou de funcionar. Analisando o protótipo
+foi possível resolver alguns problemas no projeto de hardware, que não apareceram no simulador, como a potência
+ do resistor que limita a tensão do zener e adicionar o resistor de \textit{pull-down} nas vias de entrada.
+
+\subsection{Considerações de Software}
+
+Após definido o esquema elétrico, foi iniciado o desenvolvimento do software baseado em simulação. Na figura \ref{fig:diag3} temos a
+versão de hardware utilizada para simulação. Essa versão é um pouco diferente do esquema elétrico do protótipo, excluindo
+as proteções, a fonte de 130V, Display LCD e o conversor A/D. As 40 (quarenta) vias são divididos em 5 portas de 8 bits.
+No lugar do gabinete é feito um curto entre as vias correspondente, se comportando como um gabinete sem defeito. Para simular
+um defeito, era aberto algumas ligações ou colocadas em curto.
+
+\begin{figure}[htb]
+    \centering  % figura centralizada
+    \includegraphics[scale=0.6]{Diagrama3.png}
+    \caption{\it Diagrama simplificado do hardware utilizado no ambiente simulado}
+    \label{fig:diag3}
+\end{figure}
+
+A primeira versão do software utilizava como saída padrão a interface serial. Após a inicialização do hardware, como
+ configuração dos timers e interrupções, era iniciado o teste de isolamento. O teste ocorre da seguinte forma.
+
+ É escrito 0x00 em todas as vias de saída, depois é analisada as vias de entrada, onde todos as vias devem ser 0 (zero).
+Se alguma via for 1 (um), é porque existe fuga entre o terra de proteção e o pino que foi lido como 1 (um). Geralmente
+é causado por um varístor com defeito ou uma carbonização entre essas trilhas. Se houver alguma falha o teste indica
+qual pino defeituoso e é encerado o teste. Se estiver tudo correto é iniciado o teste de continuidade.
+
+O teste de continuidade consiste em escrever 1 (um) na primeira via de saída. Depois é feito a leitura de todas
+ as vias de entrada, onde somente a primeira via de entrada deve esta setada em 1 (um). Se esse bit estiver zerado,
+ significa que esta trilha do gabinete está rompida. Se alguma outra via estiver setada em 1 (um) também, é porque
+ está em curto com a primeira via. O teste segue a mesma dinâmica para as outras quarenta vias.
+
+Nas outras versões foi adicionado o LCD, o teclado para navegação, a EEPROM,  foi otimizado em nível de código as funções de teste e
+implementado o relatório final com os defeito constatado no teste.
 
 
-
-\subsection{Desenvolvimento da Placa de circuito impresso}
+\section{Desenvolvimento da Placa de circuito impresso}
 
 Após definir o hardware, teve início a etapa de desenvolvimento da placa de circuito impresso. Como não
- tinha nenhuma experiencia nesta área, utilizei muito a documentação do própio Proteus.
+ tinha nenhuma experiencia nesta área, utilizei muito a documentação do próprio Proteus e a internet.
 
-\subsubsection{Padrões Industriais}
+Para fazer uma placa em qualquer industria de PCI(Placa de Circuito Impresso), deve ser definidas algumas características
+ de fabricação, como o tipo e espessura da placa, os  diâmetro mínimo dos furos metalizados, o tipo da  máscara de solda,
+ o silkscreen, o espaçamento minimo, a largura de trilha mínima, os ângulos de corte da placa e o tamanho máximo. Essas opções
+ que vão definir o preço por centímetro quadrado.
 
-Para fazer uma placa em qualquer industria de PCI(Placa de Circuito Impresso), deve se seguir algumas caracteristicas
- de fabricação, como o tipo e espessurra da placa, os  diâmetro mínimo dos furos metalizados, o tipo da  máscara de solda,
- o silkscreen, o espacamento minimo, a largura de trilha mínima, os ângulos de corte da placa e o tamanho máximo.
+Para enviar para industria deve-se criar os arquivos no formato Gerber RS274x, a partir do projeto do Proteus ou o software
+ que estiver utilizando. Este é o padrão das maquinas que fabricam as placas de circuito impresso. Neste arquivos são armazenadas
+ de forma ordenada várias informações sobre a sua placa, como as faces superior e inferior das trilhas, tipos de furos,
+ locais de furação, silkscreen, entre outros.
 
-Essas opções que vão definir o preço por centimetro quadrado. As placas devem ser enviadas no formato Gerber RS274x,
- que é um padrão na indústria de placas de circuito impresso. Neste arquivos são armazenadas de forma ordenada várias
- informações sobre a sua placa, como as faces superior e inferior das trilhas, tipos de furos, locais de furação, silkscreen,
- entre outros.
-
-Após a criação dos arquivos GERBER é fortemente recomendamdo confirar o resultado antes de enviar, usando algum
+Após a criação dos arquivos GERBER é fortemente recomendando conferir o resultado antes de enviar, usando algum
  software dedicado a ler este formato, como o View Plot. Nele você poderá abrir os arquivos individualmente, verificando se as
- camadas de cobre, silkscreen e furos estão corretamente posicionados. A industria não se responsabiliza por eventuais erros
+ camadas de cobre, silkscreen e furos estão corretamente posicionados e alinhados. A industria não se responsabiliza por eventuais erros
  decorrentes da omissão desta etapa de verificação.
 
-\subsubsection{Componentes Comerciais e o Proteus}
-
 Um outra etapa foi a definição dos componentes, levando em consideração o encapsulamento, preço e disponibilidade no
-mercado local.
-Alguns componentes utilizado não possuiam o encapsulamento escolhido na biblioteca de componentes do Proteus. Tive que
-aprender a editar a biblioteca do Proteus e criar encapsulamentos.
+ mercado local. Alguns componentes utilizado não possuíam o encapsulamento escolhido na biblioteca de componentes do
+ Proteus. Foi necessário editar a biblioteca do Proteus e criar encapsulamentos desejados.
 
+Após definir o tamanho da placa, foi colocado os componentes e feito o roteamento das trilhas. Como a parte de roteamento é uma
+tarefa complexa, utilizei roteamento automático para auxiliar no desenvolvimento. Mesmo ele fazendo o caminho das trilhas sozinho nem
+sempre é o melhor jeito. Antes de rotear é necessário fazer as trilhas mais especificas manualmente, como as trilhas do cristal oscilador,
+as trilha da fonte e os planos de terra para diminuir a interferência eletromagnética. No anexo B, a figura \ref{fig:B1} mostra a placa
+após roteada no modulo de circuito impresso do Proteus. Na figura \ref{fig:B2} e \ref{fig:B3} a visualização da placa em 3D,
+fornecida pelo Proteus.
 
+\subsection{Fabricação e Montagem da Placa}
 
-
-
-
-
-
-
-
-
-
+A empresa contratada para fazer a fabricação da placa é especializada em placas de circuito impresso para protótipo.
+Para conseguir um preço acessível, ela reúne pedidos de placas de varias outras empresa, o que leva em torno de um mês.
+ Quando atinge uma certa quantidade ele manda para a industria, onde serão fabricadas. Depois elas retornam
+ para empresa contratada, onde serão distribuídas para as empresas que realizarão o pedido, que leva em torno de quinze dias.
+Devido a demora, as placas não chegaram antes do meu desligamento da empresa.
